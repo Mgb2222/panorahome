@@ -18,7 +18,7 @@
 
     /* ----- Barre de navigation ----- */
     header{
-      position:fixed;top:0;left:0;width:100%;height:64px;
+      position:fixed;top:0;left:0;width:100%;height:88px;
       background:#000;z-index:999;display:flex;justify-content:center;align-items:center
     }
     nav ul{display:flex;gap:28px;list-style:none}
@@ -29,8 +29,12 @@
     nav a:hover{opacity:.7}
     /* Logo dans la barre de navigation */
     nav li.logo img{
-      height:65px;width:auto;display:block
+      height:80px;width:auto;display:block
     }
+    /* Centrer le groupe de liens tout en gardant le logo à gauche */
+    nav{position:relative;display:flex;justify-content:center;width:100%}
+    nav ul{flex:1;justify-content:center;align-items:center}
+    nav li.logo{position:absolute;left:40px;top:50%;transform:translateY(-50%)}
 
     /* ----- Bloc héro ----- */
     section.hero{
@@ -137,7 +141,7 @@
       <ul>
         <li class="logo">
           <a href="#">
-          <img src="logo-optimaison-glow.png" alt="Logo OptiMaison" style="height:65px;width:auto" />
+          <img src="logo-optimaison-glow.png" alt="Logo OptiMaison" style="height:80px;width:auto" />
           </a>
         </li>
         <li><a href="#energy">Énergie</a></li>
@@ -179,7 +183,7 @@
       <a class="btn primary" href="#">Découvrez</a>
       <a class="btn secondary" href="#">Obtenir l'app</a>
     </div>
-    <img src="https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?auto=format&fit=crop&w=1200&q=80" alt="Façade de maison d'architecte" loading="lazy">
+    <img src="https://images.unsplash.com/photo-1592833153213-9b4cf81ee0af?auto=format&fit=crop&w=1200&q=80" alt="Façade de maison d'architecte" loading="lazy">
   </section>
 
   <!-- Galerie d'inspiration -->
@@ -193,9 +197,9 @@
       <div class="card"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80" alt="Maison minimaliste au bord du lac"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80" alt="Cabane contemporaine au cœur de la forêt"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80" alt="Façade vitrée d'une micro‑maison design"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1480513279405-6057032428ec?auto=format&fit=crop&w=1200&q=80" alt="Maison container écologique" loading="lazy"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1549921296-3cdf5b8c514a?auto=format&fit=crop&w=1200&q=80" alt="Maison container écologique" loading="lazy"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=1200&q=80" alt="Loft compact inondé de lumière"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80" alt="Micro‑maison industrielle chic"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1553773076-9222291755a1?auto=format&fit=crop&w=1200&q=80" alt="Micro‑maison industrielle chic"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1600585152630-b7b14fbd7039?auto=format&fit=crop&w=1200&q=80" alt="Chalet scandinave en forêt"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1613542192049-91e81a610024?auto=format&fit=crop&w=1200&q=80" alt="Maison passive à toit végétalisé"></div>
       <!-- Séquence B (duplication pour boucle fluide) -->
@@ -203,9 +207,9 @@
       <div class="card"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80" alt=""></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80" alt=""></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80" alt=""></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1480513279405-6057032428ec?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1549921296-3cdf5b8c514a?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=1200&q=80" alt=""></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1553773076-9222291755a1?auto=format&fit=crop&w=1200&q=80" alt=""></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80" alt=""></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1600585152630-b7b14fbd7039?auto=format&fit=crop&w=1200&q=80" alt=""></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1613542192049-91e81a610024?auto=format&fit=crop&w=1200&q=80" alt=""></div>
@@ -231,21 +235,24 @@
   </footer>
 
   <script>
-    (function(){
+    (function () {
       const grid = document.querySelector('.gallery-grid');
-      const speed = 0.4; // pixels per frame
-      function step(){
+      const speed = 0.4;               // pixels per animation frame
+      const originalWidth = grid.scrollWidth;  // width before duplication
+ 
+      // Duplique les éléments une seule fois pour constituer une bande continue
+      grid.innerHTML += grid.innerHTML;
+ 
+      function step() {
         grid.scrollLeft += speed;
-        if(grid.scrollLeft >= grid.scrollWidth - grid.clientWidth){
-          grid.scrollLeft = 0;
+        // Lorsque le défilement a parcouru la largeur initiale,
+        // on le ramène en arrière de cette même largeur – effet boucle sans saut
+        if (grid.scrollLeft >= originalWidth) {
+          grid.scrollLeft -= originalWidth;
         }
         requestAnimationFrame(step);
       }
-      // Duplicate nodes programmatically to guarantee seamless width
-      const clone = grid.cloneNode(true);
-      while(clone.firstElementChild){
-        grid.appendChild(clone.firstElementChild);
-      }
+ 
       requestAnimationFrame(step);
     })();
   </script>

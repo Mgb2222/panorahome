@@ -155,7 +155,32 @@
     0%,100% { color:#fff; }
     50%     { color:#000; }
   }
-
+  
+  /* ----- Rainbow gradient text that animates ----- */
+  .rainbow-text{
+    background:linear-gradient(90deg,#c8c9ff 0%,#7be0c0 15%,#ffe67d 30%,#f9a36a 45%,#ff79b5 60%,#a28dff 75%,#8ec0ff 90%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+    text-fill-color:transparent;
+    background-size:300% 300%;
+    animation:rainbow-shift 8s linear infinite;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));
+  }
+  
+  /* Override the black/white swap for rainbow text */
+  .hero.full-bg .rainbow-text{
+    animation:rainbow-shift 8s linear infinite;
+  }
+  
+  /* Animation that shifts the gradient over time */
+  @keyframes rainbow-shift{
+    0%   { background-position:0% 50%; }
+    50%  { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
+  }
+  
   /* Appliqué aux titres & taglines des deux héros */
   .hero.full-bg h1,
   .hero.full-bg .tagline,
@@ -234,8 +259,8 @@
   <!-- 1. Maisons de luxe sur mesure -->
   <section class="hero dark full-bg" id="energy">
   
-    <h1>Votre énergie, réinventée.</h1>
-    <p class="tagline">Visualisez chaque watt. Économisez, sans compromis.</p>
+    <h1 class="rainbow-text">Votre énergie, réinventée.</h1>
+    <p class="tagline rainbow-text">Visualisez chaque watt. Économisez, sans compromis.</p>
     <div class="cta">
       <a class="btn primary" href="#">Découvrir OptiMaison</a>
       <a class="btn secondary" href="#">Télécharger gratuitement</a>

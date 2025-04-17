@@ -410,55 +410,40 @@
     (function () {
       const grid = document.querySelector('.gallery-grid');
   
-      /* 1. Duplique UNE seule fois la rangée d’origine */
-      grid.innerHTML += grid.innerHTML;
-  
-      /* 2. Calcule la largeur exacte d’un tour complet
-            – mise à jour dynamique via ResizeObserver */
-      let contentWidth = grid.scrollWidth / 2;      // valeur initiale
-  
-      const ro = new ResizeObserver(()=>{
-        contentWidth = grid.scrollWidth / 2;        // ajuste dès qu’une image se charge
-      });
-      ro.observe(grid);
-  
-      /* --- Ajoute dynamiquement une nouvelle carte Unsplash à droite --- */
-      function addNewCard () {
-        const url = `https://source.unsplash.com/random/1200x800?sig=${Date.now()}`;
-        const card = document.createElement('div');
-        card.className = 'card';
-        const img = document.createElement('img');
-        img.loading = 'lazy';
-        img.alt = 'Inspiration maison';
-        img.src = url;
-        card.appendChild(img);
-        grid.appendChild(card);
-        // Laisser le ResizeObserver ajuster 'contentWidth' automatiquement
-        // Si trop de cartes → retire la première pour limiter la taille du DOM
-        if (grid.children.length > 24) {   // garde environ 24 images max
-          grid.removeChild(grid.firstElementChild);
-        }
-      }
-  
-      /* 3. Animation continue avec reset instantané (aucun saut visible) */
-      let speed = 1.2;                              // px par frame
+      /* 3. Animation continue + recyclage de carte */
+      const cardGap = parseInt(getComputedStyle(grid.querySelector('.card')).marginRight) || 0;
+      let cardWidth = grid.querySelector('.card').offsetWidth + cardGap;
+      let speed = 1.2;          // px par frame
       let pos = 0;
+  
+      // Ajuste cardWidth si les images modifient la taille de carte
+      const sizeObs = new ResizeObserver(()=>{
+        cardWidth = grid.querySelector('.card').offsetWidth + cardGap;
+      });
+      sizeObs.observe(grid.querySelector('.card'));
   
       function step () {
         pos += speed;
-        if (pos >= contentWidth) pos -= contentWidth;   // remise à zéro exacte
+  
+        /* Quand la 1ʳᵉ carte a quitté l’écran,
+           on la remet à droite avec une nouvelle image */
+        if (pos >= cardWidth){
+          pos -= cardWidth;                     // continuité parfaite
+          const first = grid.firstElementChild;
+          const img   = first.querySelector('img');
+          img.src = `https://source.unsplash.com/random/1200x800?sig=${Date.now()}`;
+          grid.appendChild(first);
+        }
+  
         grid.style.transform = `translateX(${-pos}px)`;
         requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
   
-      /* 4. Pause lorsque l’onglet n’est pas visible */
+      /* 4. Pause quand l’onglet est masqué */
       document.addEventListener('visibilitychange', ()=>{
         speed = document.hidden ? 0 : 1.2;
       });
-  
-      /* Lance l’ajout automatique toutes les 8 secondes */
-      setInterval(addNewCard, 8000);
     })();
   </script>
 

@@ -29,7 +29,7 @@
     nav a:hover{opacity:.7}
     /* Logo dans la barre de navigation */
     nav li.logo img{
-      height:56px;width:auto;display:block
+      height:65px;width:auto;display:block
     }
 
     /* ----- Bloc héro ----- */
@@ -106,7 +106,6 @@
   section.gallery.auto-scroll .gallery-grid{
     display:flex;flex-wrap:nowrap;gap:24px;margin-top:60px;
     overflow:hidden; /* masque la scrollbar */
-    animation:scroll-left 60s linear infinite;
   }
   section.gallery .gallery-grid{
     display:flex;flex-wrap:nowrap;gap:24px;margin-top:60px;
@@ -127,11 +126,6 @@
     section.gallery h2{font-size:34px}
     .tube{font-size:42px}
   }
-  /* --- Auto‑scroll animation --- */
-  @keyframes scroll-left{
-    0%{transform:translateX(0)}
-    100%{transform:translateX(-50%)}
-  }
   </style>
 </head>
 
@@ -143,7 +137,7 @@
       <ul>
         <li class="logo">
           <a href="#">
-            <img src="logo-optimaison-glow.png" alt="Logo OptiMaison" style="height:28px;width:auto" />
+          <img src="logo-optimaison-glow.png" alt="Logo OptiMaison" style="height:65px;width:auto" />
           </a>
         </li>
         <li><a href="#energy">Énergie</a></li>
@@ -235,6 +229,26 @@
   <footer>
     © 2025 OptiMaison. Tous droits réservés.
   </footer>
+
+  <script>
+    (function(){
+      const grid = document.querySelector('.gallery-grid');
+      const speed = 0.4; // pixels per frame
+      function step(){
+        grid.scrollLeft += speed;
+        if(grid.scrollLeft >= grid.scrollWidth - grid.clientWidth){
+          grid.scrollLeft = 0;
+        }
+        requestAnimationFrame(step);
+      }
+      // Duplicate nodes programmatically to guarantee seamless width
+      const clone = grid.cloneNode(true);
+      while(clone.firstElementChild){
+        grid.appendChild(clone.firstElementChild);
+      }
+      requestAnimationFrame(step);
+    })();
+  </script>
 
 </body>
 </html>

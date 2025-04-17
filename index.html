@@ -407,7 +407,16 @@
       let pos = 0;                               // position virtuelle
   
       function step () {
-        pos = (pos + speed) % contentWidth;
+        // Recalcule la largeur d’un jeu d’images à chaque frame (les images
+        // peuvent mettre un moment à se charger sur mobile → largeur variable)
+        const contentWidth = grid.scrollWidth / 2;
+
+        pos += speed;
+        if (pos >= contentWidth) {
+          // Au lieu d’un reset brutal à 0, on recule juste d’un "tour"
+          pos -= contentWidth;
+        }
+
         grid.style.transform = `translateX(${-pos}px)`;
         requestAnimationFrame(step);
       }

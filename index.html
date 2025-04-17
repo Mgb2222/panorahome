@@ -128,9 +128,16 @@
     filter:drop-shadow(0 8px 18px rgba(0,0,0,.1));
   }
   section.gallery.auto-scroll .gallery-grid{
-    display:flex;flex-wrap:nowrap;gap:24px;margin-top:60px;
+    display:flex;flex-wrap:nowrap;margin-top:60px;
     overflow:hidden; /* masque la scrollbar */
     will-change:transform;     /* lissage GPU – évite tout blocage */
+  }
+  /* Espacement carte‑à‑carte, sans marge après la dernière carte */
+  section.gallery.auto-scroll .card{
+    margin-right:24px;
+  }
+  section.gallery.auto-scroll .card:last-of-type{
+    margin-right:0;
   }
   section.gallery .gallery-grid{
     display:flex;flex-wrap:nowrap;gap:24px;margin-top:60px;

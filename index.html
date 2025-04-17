@@ -168,11 +168,46 @@
   .hero.water-bg{
     /* calque 1 = photo (cover)  |  calque 2 = dégradé bleu‑blanc */
     background:
-      url("https://images.unsplash.com/photo-1560185127-6a8c2d6f460f?auto=format&fit=crop&w=3840&q=80")
+      url("https://images.unsplash.com/photo-1500370352565-e8ee3f3c817f?auto=format&fit=crop&w=3840&q=80")
         center/cover no-repeat,
       linear-gradient(180deg,#d7eaff 0%, #f9fdff 100%);
   }
 
+  /* ===== Mobile optimisation (≤ 600 px) ===== */
+  @media (max-width:600px){
+    /* Navigation bar */
+    header{height:64px;padding:0 12px;}
+    nav li.logo img{height:44px;}
+    nav a{font-size:15px;}
+    nav ul{gap:18px;}
+ 
+    /* Hero sections */
+    section.hero{padding:120px 16px 80px;}
+    h1{font-size:32px;}
+    p.tagline{font-size:18px;margin-bottom:28px;}
+    .cta{gap:12px;}
+    .btn{padding:10px 24px;font-size:15px;}
+ 
+    /* Gallery */
+    section.gallery.auto-scroll{padding:80px 14px;}
+    section.gallery.auto-scroll h2{font-size:32px;}
+    .tube{font-size:36px;}
+    section.gallery .card{
+      width:200px;
+      height:140px;
+    }
+  }
+ 
+  /* ===== Large desktop optimisation (≥ 1600 px) ===== */
+  @media (min-width:1600px){
+    h1{font-size:72px;}
+    p.tagline{font-size:28px;}
+    section.gallery .card{
+      width:340px;
+      height:240px;
+    }
+  }
+ 
   </style>
 </head>
 
@@ -237,8 +272,6 @@
       <div class="card"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80"  alt="Maison minimaliste au bord du lac" loading="lazy"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=1200&q=80"  alt="Loft compact inondé de lumière" loading="lazy"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=1200&q=80"  alt="Maison avec piscine" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1613542192049-91e81a610024?auto=format&fit=crop&w=1200&q=80"  alt="Maison avec façade vitrée" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1553773076-9222291755a1?auto=format&fit=crop&w=1200&q=80"  alt="Micro‑chalet en forêt" loading="lazy"></div>
     </div>
 
     <p style="max-width:720px;margin:60px auto 0;font-size:20px;line-height:1.5">

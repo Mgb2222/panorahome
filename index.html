@@ -406,10 +406,16 @@
     (function () {
       const grid = document.querySelector('.gallery-grid');
   
-      // Duplique la ligne d’images pour obtenir une boucle parfaite
-      grid.innerHTML += grid.innerHTML;
+      // Largeur du premier jeu d’images (= largeur "contenu" d'origine)
+      const originalWidth = grid.scrollWidth;
   
-      const contentWidth = grid.scrollWidth / 2; // largeur d’un jeu d’images
+      // Duplique jusqu’à ce que la somme atteigne au moins 1,5× la largeur viewport
+      // (garantit qu’il y aura toujours une image pour couvrir tout l’écran)
+      while (grid.scrollWidth < window.innerWidth * 1.5) {
+        grid.innerHTML += grid.innerHTML;
+      }
+  
+      const contentWidth = originalWidth;   // on boucle toujours sur la largeur d'origine
       let speed = 0.6;                           // px par frame
       let pos = 0;                               // position virtuelle
   

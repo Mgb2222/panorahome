@@ -410,31 +410,31 @@
     (function () {
       const grid = document.querySelector('.gallery-grid');
   
-      // Largeur du premier jeu d’images (= largeur "contenu" d'origine)
-      const originalWidth = grid.scrollWidth;
+      /* 1. Duplique UNE seule fois la rangée d’origine */
+      grid.innerHTML += grid.innerHTML;
   
-      // Duplique jusqu’à ce que la somme atteigne au moins 2× la largeur viewport
-      // (garantit qu’il y aura toujours une image pour couvrir tout l’écran)
-      while (grid.scrollWidth < window.innerWidth * 2) {
-        grid.innerHTML += grid.innerHTML;
-      }
+      /* 2. Calcule la largeur exacte d’un tour complet
+            – mise à jour dynamique via ResizeObserver */
+      let contentWidth = grid.scrollWidth / 2;      // valeur initiale
   
-      // Calcule la largeur d’un tour complet = largeur des cartes + la marge finale
-      const cardGap = parseInt(getComputedStyle(grid.querySelector('.card')).marginRight) || 0;
-      const contentWidth = originalWidth + cardGap;   // largeur exacte à boucler
-
-      let speed = 1.2;    // px par frame — deux fois plus rapide
-      let pos = 0;        // position virtuelle
-
+      const ro = new ResizeObserver(()=>{
+        contentWidth = grid.scrollWidth / 2;        // ajuste dès qu’une image se charge
+      });
+      ro.observe(grid);
+  
+      /* 3. Animation continue avec reset instantané (aucun saut visible) */
+      let speed = 1.2;                              // px par frame
+      let pos = 0;
+  
       function step () {
-        pos = (pos + speed) % contentWidth;
+        pos += speed;
+        if (pos >= contentWidth) pos -= contentWidth;   // remise à zéro exacte
         grid.style.transform = `translateX(${-pos}px)`;
         requestAnimationFrame(step);
       }
-
       requestAnimationFrame(step);
   
-      // Pause la translation quand l’onglet est masqué (éco‑batterie)
+      /* 4. Pause lorsque l’onglet n’est pas visible */
       document.addEventListener('visibilitychange', ()=>{
         speed = document.hidden ? 0 : 1.2;
       });

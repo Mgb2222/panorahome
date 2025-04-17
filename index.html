@@ -130,6 +130,7 @@
   section.gallery.auto-scroll .gallery-grid{
     display:flex;flex-wrap:nowrap;gap:24px;margin-top:60px;
     overflow:hidden; /* masque la scrollbar */
+    will-change:transform;     /* lissage GPU – évite tout blocage */
   }
   section.gallery .gallery-grid{
     display:flex;flex-wrap:nowrap;gap:24px;margin-top:60px;
@@ -289,6 +290,9 @@
     h1{font-size:28px;}
     .tube{font-size:32px;}
     section.hero{padding:100px 12px 60px;}
+    /* Décale les liens pour ne plus chevaucher le logo */
+    nav ul{padding-left:92px;}   /* ≈ largeur logo (44) + marge à droite */
+    nav li.logo{left:12px;}      /* logo proche du bord, gagne 28 px */
   }
   
   /* ===== iPad portrait (768 px) ===== */
@@ -296,6 +300,9 @@
     h1{font-size:48px;}
     .tube{font-size:56px;}
     nav a{font-size:17px;}
+    /* Laisse un peu d’espace autour du logo pour les tablettes */
+    nav ul{padding-left:120px;}
+    nav li.logo{left:24px;}
   }
   
   /* ===== iPad landscape (1024 px) ===== */
@@ -391,22 +398,23 @@
   <script>
     (function () {
       const grid = document.querySelector('.gallery-grid');
-      let speed = 0.6;            // px par frame → augmente pour aller plus vite
-      let pos = 0;           // position virtuelle en pixels (float) – évite l’arrondi iOS
-
-      // On duplique la bande une seule fois pour constituer une boucle sans fin
+  
+      // Duplique la ligne d’images pour obtenir une boucle parfaite
       grid.innerHTML += grid.innerHTML;
-
+  
+      const contentWidth = grid.scrollWidth / 2; // largeur d’un jeu d’images
+      let speed = 0.6;                           // px par frame
+      let pos = 0;                               // position virtuelle
+  
       function step () {
-        // Avance la position virtuelle (float), puis applique la valeur entière à scrollLeft
-        pos = (pos + speed) % (grid.scrollWidth / 2);
-        grid.scrollLeft = pos;              // Safari tronque à l’entier → OK
+        pos = (pos + speed) % contentWidth;
+        grid.style.transform = `translateX(${-pos}px)`;
         requestAnimationFrame(step);
       }
-
+  
       requestAnimationFrame(step);
-      
-      // Pause la translation quand l’onglet est en arrière‑plan
+  
+      // Pause la translation quand l’onglet est masqué (éco‑batterie)
       document.addEventListener('visibilitychange', ()=>{
         speed = document.hidden ? 0 : 0.6;
       });

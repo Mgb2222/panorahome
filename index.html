@@ -248,7 +248,12 @@
     animation:redwhite-shift 6s linear infinite;
     filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));
   }
- 
+
+  @keyframes redwhite-shift{
+    0%   { background-position:0% 50%; }
+    100% { background-position:100% 50%; }
+  }
+
   </style>
 </head>
 
@@ -285,8 +290,8 @@
 
   <!-- 2. Projets d'affaires innovants -->
   <section class="hero water-bg" id="water">
-    <h1>L'eau sous contrôle.</h1>
-    <p class="tagline">Analysez, ajustez — économisez jusqu'à 15 %.</p>
+    <h1 class="redwhite-text">L'eau sous contrôle.</h1>
+    <p class="tagline redwhite-text">Analysez, ajustez — économisez jusqu'à 15&nbsp;%. </p>
     <div class="cta">
       <a class="btn primary" href="#">En savoir plus</a>
       <a class="btn secondary" href="#">Commencer</a>

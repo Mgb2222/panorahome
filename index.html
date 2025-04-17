@@ -422,6 +422,24 @@
       });
       ro.observe(grid);
   
+      /* --- Ajoute dynamiquement une nouvelle carte Unsplash à droite --- */
+      function addNewCard () {
+        const url = `https://source.unsplash.com/random/1200x800?sig=${Date.now()}`;
+        const card = document.createElement('div');
+        card.className = 'card';
+        const img = document.createElement('img');
+        img.loading = 'lazy';
+        img.alt = 'Inspiration maison';
+        img.src = url;
+        card.appendChild(img);
+        grid.appendChild(card);
+        // Laisser le ResizeObserver ajuster 'contentWidth' automatiquement
+        // Si trop de cartes → retire la première pour limiter la taille du DOM
+        if (grid.children.length > 24) {   // garde environ 24 images max
+          grid.removeChild(grid.firstElementChild);
+        }
+      }
+  
       /* 3. Animation continue avec reset instantané (aucun saut visible) */
       let speed = 1.2;                              // px par frame
       let pos = 0;
@@ -438,6 +456,9 @@
       document.addEventListener('visibilitychange', ()=>{
         speed = document.hidden ? 0 : 1.2;
       });
+  
+      /* Lance l’ajout automatique toutes les 8 secondes */
+      setInterval(addNewCard, 8000);
     })();
   </script>
 

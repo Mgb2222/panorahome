@@ -233,6 +233,22 @@
     }
   }
  
+  /* --- Texte rouge | noir animé --- */
+  .redwhite-text{
+    background:repeating-linear-gradient(
+        90deg,
+        #ff3b30 0%,   #ff3b30 12.5%,
+        #000000 12.5%,#000000 25%,
+        #ff3b30 25%,  #ff3b30 37.5%,
+        #000000 37.5%,#000000 50%
+    );
+    -webkit-background-clip:text; background-clip:text;
+    color:transparent;
+    background-size:200% 100%;
+    animation:redwhite-shift 6s linear infinite;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));
+  }
+ 
   </style>
 </head>
 
@@ -289,8 +305,8 @@
 
   <!-- Galerie d'inspiration -->
   <section class="gallery auto-scroll" id="gallery">
-    <h2 class="tube">Inspirations haut de gamme, format compact.</h2>
-    <p class="tagline">Des espaces lumineux pour vivre grand, même en petit.</p>
+    <h2 class="tube rainbow-text">Inspirations haut de gamme, format compact.</h2>
+    <p class="tagline rainbow-text">Des espaces lumineux pour vivre grand, même en petit.</p>
 
     <div class="gallery-grid">
       <div class="card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"  alt="Petite maison moderne en bois" loading="lazy"></div>
@@ -300,9 +316,9 @@
     </div>
 
     <p style="max-width:720px;margin:60px auto 0;font-size:20px;line-height:1.5">
-      OptiMaison réunit luxe et ingéniosité : micro‑maisons design, rénovations signature, confort durable.  
+      OptiMaison réunit luxe et ingéniosité : micro‑maisons design, rénovations signature, confort durable.  
       Collaborez avec nos architectes et artisans d'exception pour créer un espace épuré qui reflète votre style.  
-      <strong>Réservez une consultation privée</strong> — vivez grand, même en petit.
+      <strong class="rainbow-text">Réservez une consultation privée</strong> — vivez grand, même en petit.
     </p>
   </section>
   <!-- Pied de page -->
@@ -313,22 +329,22 @@
   <script>
     (function () {
       const grid = document.querySelector('.gallery-grid');
-      const speed = 0.4;               // pixels per animation frame
-      const originalWidth = grid.scrollWidth;  // width before duplication
- 
-      // Duplique les éléments une seule fois pour constituer une bande continue
+      const speed = 0.6;            // px par frame → augmente pour aller plus vite
+
+      // On duplique la bande une seule fois pour constituer une boucle sans fin
       grid.innerHTML += grid.innerHTML;
- 
-      function step() {
+
+      function step () {
         grid.scrollLeft += speed;
-        // Lorsque le défilement a parcouru la largeur initiale,
-        // on le ramène en arrière de cette même largeur – effet boucle sans saut
-        if (grid.scrollLeft >= originalWidth) {
-          grid.scrollLeft -= originalWidth;
+
+        /* Quand on a parcouru la 1ʳᵉ moitié (la largeur originale),
+           on revient au début — effet boucle sans le moindre "saut". */
+        if (grid.scrollLeft >= grid.scrollWidth / 2) {
+          grid.scrollLeft = 0;
         }
         requestAnimationFrame(step);
       }
- 
+
       requestAnimationFrame(step);
     })();
   </script>

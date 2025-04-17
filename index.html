@@ -392,13 +392,15 @@
     (function () {
       const grid = document.querySelector('.gallery-grid');
       let speed = 0.6;            // px par frame → augmente pour aller plus vite
+      let pos = 0;           // position virtuelle en pixels (float) – évite l’arrondi iOS
 
       // On duplique la bande une seule fois pour constituer une boucle sans fin
       grid.innerHTML += grid.innerHTML;
 
       function step () {
-        // Avance la grille et boucle sans aucun “saut” ni pause.
-        grid.scrollLeft = (grid.scrollLeft + speed) % (grid.scrollWidth / 2);
+        // Avance la position virtuelle (float), puis applique la valeur entière à scrollLeft
+        pos = (pos + speed) % (grid.scrollWidth / 2);
+        grid.scrollLeft = pos;              // Safari tronque à l’entier → OK
         requestAnimationFrame(step);
       }
 

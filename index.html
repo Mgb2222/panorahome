@@ -409,9 +409,9 @@
       // Largeur du premier jeu d’images (= largeur "contenu" d'origine)
       const originalWidth = grid.scrollWidth;
   
-      // Duplique jusqu’à ce que la somme atteigne au moins 1,5× la largeur viewport
+      // Duplique jusqu’à ce que la somme atteigne au moins 2× la largeur viewport
       // (garantit qu’il y aura toujours une image pour couvrir tout l’écran)
-      while (grid.scrollWidth < window.innerWidth * 1.5) {
+      while (grid.scrollWidth < window.innerWidth * 2) {
         grid.innerHTML += grid.innerHTML;
       }
   
@@ -420,16 +420,8 @@
       let pos = 0;                               // position virtuelle
   
       function step () {
-        // Recalcule la largeur d’un jeu d’images à chaque frame (les images
-        // peuvent mettre un moment à se charger sur mobile → largeur variable)
-        const contentWidth = grid.scrollWidth / 2;
-
-        pos += speed;
-        if (pos >= contentWidth) {
-          // Au lieu d’un reset brutal à 0, on recule juste d’un "tour"
-          pos -= contentWidth;
-        }
-
+        const contentWidth = originalWidth;   // largeur fixe d'un tour complet
+        pos = (pos + speed) % contentWidth;   // boucle parfaite, pas d'accumulation
         grid.style.transform = `translateX(${-pos}px)`;
         requestAnimationFrame(step);
       }

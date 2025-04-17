@@ -254,6 +254,27 @@
     100% { background-position:100% 50%; }
   }
 
+  /* --- Texte bleu | noir animé --- */
+  .blueblack-text{
+    background:repeating-linear-gradient(
+        90deg,
+        #0071e3 0%,   #0071e3 12.5%,   /* bleu OptiMaison */
+        #000000 12.5%,#000000 25%,
+        #0071e3 25%,  #0071e3 37.5%,
+        #000000 37.5%,#000000 50%
+    );
+    -webkit-background-clip:text; background-clip:text;
+    color:transparent;
+    background-size:200% 100%;
+    animation:blueblack-shift 6s linear infinite;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.25));
+  }
+
+  @keyframes blueblack-shift{
+    0%   { background-position:0% 50%; }
+    100% { background-position:100% 50%; }
+  }
+
   </style>
 </head>
 
@@ -290,8 +311,8 @@
 
   <!-- 2. Projets d'affaires innovants -->
   <section class="hero water-bg" id="water">
-    <h1 class="redwhite-text">L'eau sous contrôle.</h1>
-    <p class="tagline redwhite-text">Analysez, ajustez — économisez jusqu'à 15&nbsp;%. </p>
+    <h1 class="blueblack-text">L'eau sous contrôle.</h1>
+    <p class="tagline blueblack-text">Analysez, ajustez — économisez jusqu'à 15&nbsp;%. </p>
     <div class="cta">
       <a class="btn primary" href="#">En savoir plus</a>
       <a class="btn secondary" href="#">Commencer</a>

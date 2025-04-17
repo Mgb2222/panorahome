@@ -82,6 +82,16 @@
     position:absolute;top:0;left:0;width:100%;height:100%;
     object-fit:cover;z-index:-1
   }
+  /* ----- Hero full‑screen image ----- */
+  .hero.full-bg{
+    background:url("https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=5120&q=80") center/cover no-repeat;
+    position:relative;
+  }
+  .hero.full-bg::before{
+    content:"";position:absolute;inset:0;
+    background:rgba(0,0,0,.55); /* assombrit l'image pour la lisibilité */
+    z-index:-1;
+  }
   /* ----- Galerie ----- */
   section.gallery.auto-scroll{padding:120px 20px;background:#fff;text-align:center}
   section.gallery.auto-scroll h2{font-size:48px;font-weight:600;margin-bottom:12px}
@@ -133,10 +143,7 @@
       <ul>
         <li class="logo">
           <a href="#">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABXXXXXX…VYHJ==" 
-              alt="Logo OptiMaison"
-              style="height:24px; width:auto;" />
+            <img src="logo-optimaison-glow.png" alt="Logo OptiMaison" style="height:28px;width:auto" />
           </a>
         </li>
         <li><a href="#energy">Énergie</a></li>
@@ -149,10 +156,8 @@
   </header>
 
   <!-- 1. Maisons de luxe sur mesure -->
-  <section class="hero dark video" id="energy">
-  <video class="bg-video" autoplay loop muted playsinline>
-    <source src="https://storage.coverr.co/videos/coverr-modern-home-6891/1080p.mp4" type="video/mp4">
-  </video>
+  <section class="hero dark full-bg" id="energy">
+  
     <h1>Votre énergie, réinventée.</h1>
     <p class="tagline">Visualisez chaque watt. Économisez, sans compromis.</p>
     <div class="cta">
@@ -192,9 +197,9 @@
       <!-- Séquence A -->
       <div class="card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Petite maison moderne en bois"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80" alt="Maison minimaliste au bord du lac"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1505691723518-36a7b1b5e3c1?auto=format&fit=crop&w=1200&q=80" alt="Cabane contemporaine au cœur de la forêt"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80" alt="Cabane contemporaine au cœur de la forêt"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80" alt="Façade vitrée d'une micro‑maison design"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1553639242-2f4ac10bd420?auto=format&fit=crop&w=1200&q=80" alt="Petit chalet lumineux et minimaliste"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1600585154447-7fd6de8550ea?auto=format&fit=crop&w=1200&q=80" alt="Petit chalet lumineux et minimaliste"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1531105701418-7c8ac016d4c5?auto=format&fit=crop&w=1200&q=80" alt="Maison container écologique"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=1200&q=80" alt="Loft compact inondé de lumière"></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80" alt="Micro‑maison industrielle chic"></div>
@@ -203,9 +208,9 @@
       <!-- Séquence B (duplication pour boucle fluide) -->
       <div class="card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt=""></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80" alt=""></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1505691723518-36a7b1b5e3c1?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80" alt=""></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=1200&q=80" alt=""></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1553639242-2f4ac10bd420?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1600585154447-7fd6de8550ea?auto=format&fit=crop&w=1200&q=80" alt=""></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1531105701418-7c8ac016d4c5?auto=format&fit=crop&w=1200&q=80" alt=""></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=1200&q=80" alt=""></div>
       <div class="card"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1200&q=80" alt=""></div>

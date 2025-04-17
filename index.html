@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>PanoraHome – Vivre plus grand</title>
+  <title>OptiMaison – Reprenez le contrôle de votre consommation</title>
 
   <!-- Styles -->
   <style>
@@ -72,6 +72,12 @@
       h1{font-size:40px}
       p.tagline{font-size:20px}
     }
+  /* ----- Hero video ----- */
+  .hero.video{position:relative;overflow:hidden}
+  .hero.video video.bg-video{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    object-fit:cover;z-index:-1
+  }
   </style>
 </head>
 
@@ -81,53 +87,54 @@
   <header>
     <nav>
       <ul>
-        <li><a href="#">PanoraHome</a></li>
-        <li><a href="#opti">Maisons</a></li>
-        <li><a href="#astro">Évasion</a></li>
-        <li><a href="#aqualux">Prestige</a></li>
-        <li><a href="#">Acheter</a></li>
+        <li><a href="#">OptiMaison</a></li>
+        <li><a href="#energy">Énergie</a></li>
+        <li><a href="#water">Eau</a></li>
+        <li><a href="#waste">Déchets</a></li>
+        <li><a href="#">Télécharger</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- 1. Opti‑Maison Panoramique (photo moderne horizontale) -->
-  <section class="hero dark" id="opti">
-    <h1>Opti‑Maison<br>Panoramique</h1>
-    <p class="tagline">Une vue infinie. Un confort réinventé.</p>
+  <!-- 1. Maisons de luxe sur mesure -->
+  <section class="hero dark video" id="energy">
+  <video class="bg-video" autoplay loop muted playsinline>
+    <source src="https://storage.coverr.co/videos/coverr-modern-home-6891/1080p.mp4" type="video/mp4">
+  </video>
+    <h1>Maîtrisez votre énergie</h1>
+    <p class="tagline">Un regard immersif sur une résidence sophistiquée.</p>
     <div class="cta">
-      <a class="btn primary" href="#">En savoir plus</a>
-      <a class="btn secondary" href="#">Acheter</a>
+      <a class="btn primary" href="#">Découvrir l'app</a>
+      <a class="btn secondary" href="#">Télécharger gratuitement</a>
     </div>
-    <img src="images/horizon.jpg" alt="Opti‑Maison Panoramique">
   </section>
 
-  <!-- 2. AstroLodge (photo tour de guet / ciel étoilé) -->
-  <section class="hero light-blue" id="astro">
-    <h1>AstroLodge</h1>
-    <p class="tagline">Dormez sous les étoiles. Réveillez‑vous chez vous.</p>
+  <!-- 2. Projets d'affaires innovants -->
+  <section class="hero light-blue" id="water">
+    <h1>Optimisez votre eau</h1>
+    <p class="tagline">Réduisez votre consommation et économisez jusqu'à 15 % sur l'eau.</p>
     <div class="cta">
-      <a class="btn primary" href="#">En savoir plus</a>
-      <a class="btn secondary" href="#">Réserver</a>
+      <a class="btn primary" href="#">Voir comment</a>
+      <a class="btn secondary" href="#">Commencer</a>
     </div>
-    <img src="images/etoiles.jpg" alt="AstroLodge">
+    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80" alt="Maison moderne avec piscine">
   </section>
 
-  <!-- 3. Villa AquaLux  (photo grande maison + piscine) -->
-  <section class="hero pastel" id="aqualux">
-    <h1>Villa AquaLux</h1>
-    <p class="tagline">Éblouissante de jour comme de nuit.</p>
+  <!-- 3. Rénovations haut de gamme -->
+  <section class="hero pastel" id="waste">
+    <h1>Gérez vos déchets intelligemment</h1>
+    <p class="tagline">Suivi de vos déchets et rappels de collecte intégrés.</p>
     <div class="cta">
       <a class="btn primary" href="#">En savoir plus</a>
-      <a class="btn secondary" href="#">Acheter</a>
+      <a class="btn secondary" href="#">Installer</a>
     </div>
-    <img src="images/luxury.jpg" alt="Villa AquaLux">
+    <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80" alt="Façade de maison d'architecte">
   </section>
 
   <!-- Pied de page -->
   <footer>
-    © 2024 PanoraHome. Tous droits réservés. <br>
-    Les visuels, prix et caractéristiques sont susceptibles d'être modifiés sans préavis.
+    © 2025 OptiMaison. Tous droits réservés.
   </footer>
 
 </body>
-</html> 
+</html>

@@ -413,7 +413,8 @@
       /* 3. Animation continue + recyclage de carte */
       const cardGap = parseInt(getComputedStyle(grid.querySelector('.card')).marginRight) || 0;
       let cardWidth = grid.querySelector('.card').offsetWidth + cardGap;
-      let speed = 2.0;          // px par frame   // plus rapide & fluide
+      const baseSpeed = 2.0;    // px par frame
+      let speed = baseSpeed;
       let pos = 0;
   
       // Ajuste cardWidth si les images modifient la taille de carte
@@ -439,7 +440,7 @@
   
       /* 4. Pause quand l’onglet est masqué */
       document.addEventListener('visibilitychange', ()=>{
-        speed = document.hidden ? 0 : 1.2;
+        speed = document.hidden ? 0 : baseSpeed;
       });
     })();
   </script>

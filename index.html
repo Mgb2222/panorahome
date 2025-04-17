@@ -413,7 +413,7 @@
       /* 3. Animation continue + recyclage de carte */
       const cardGap = parseInt(getComputedStyle(grid.querySelector('.card')).marginRight) || 0;
       let cardWidth = grid.querySelector('.card').offsetWidth + cardGap;
-      let speed = 1.2;          // px par frame
+      let speed = 2.0;          // px par frame   // plus rapide & fluide
       let pos = 0;
   
       // Ajuste cardWidth si les images modifient la taille de carte
@@ -428,11 +428,8 @@
         /* Quand la 1ʳᵉ carte a quitté l’écran,
            on la remet à droite avec une nouvelle image */
         if (pos >= cardWidth){
-          pos -= cardWidth;                     // continuité parfaite
-          const first = grid.firstElementChild;
-          const img   = first.querySelector('img');
-          img.src = `https://source.unsplash.com/random/1200x800?sig=${Date.now()}`;
-          grid.appendChild(first);
+          pos -= cardWidth;          // continuité parfaite
+          grid.appendChild(grid.firstElementChild);  // recycle sans changer l'image
         }
   
         grid.style.transform = `translateX(${-pos}px)`;

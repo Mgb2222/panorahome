@@ -415,17 +415,19 @@
         grid.innerHTML += grid.innerHTML;
       }
   
-      const contentWidth = originalWidth;   // on boucle toujours sur la largeur d'origine
-      let speed = 0.6;                           // px par frame
-      let pos = 0;                               // position virtuelle
-  
+      // Calcule la largeur d’un tour complet = largeur des cartes + la marge finale
+      const cardGap = parseInt(getComputedStyle(grid.querySelector('.card')).marginRight) || 0;
+      const contentWidth = originalWidth + cardGap;   // largeur exacte à boucler
+
+      let speed = 0.6;    // px par frame
+      let pos = 0;        // position virtuelle
+
       function step () {
-        const contentWidth = originalWidth;   // largeur fixe d'un tour complet
-        pos = (pos + speed) % contentWidth;   // boucle parfaite, pas d'accumulation
+        pos = (pos + speed) % contentWidth;
         grid.style.transform = `translateX(${-pos}px)`;
         requestAnimationFrame(step);
       }
-  
+
       requestAnimationFrame(step);
   
       // Pause la translation quand l’onglet est masqué (éco‑batterie)

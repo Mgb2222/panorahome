@@ -2,16 +2,24 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
   <title>OptiMaison – Reprenez le contrôle de votre consommation</title>
 
   <!-- Styles -->
   <style>
     /* ----- Base ----- */
+    :root{
+      --safe-top:   env(safe-area-inset-top,   0px);
+      --safe-bottom:env(safe-area-inset-bottom,0px);
+      --safe-left:  env(safe-area-inset-left,  0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+    }
     *{box-sizing:border-box;margin:0;padding:0}
     body{
       font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
       color:#1d1d1f; background:#fff; line-height:1.4;
+      padding:var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);
     }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;display:block}
@@ -21,6 +29,7 @@
       position:fixed;top:0;left:0;width:100%;height:88px;
       background:#000;z-index:999;display:flex;justify-content:center;align-items:center
     }
+    header{padding-top:calc(var(--safe-top) + 4px);}
     nav ul{display:flex;gap:28px;list-style:none}
     nav a{
       color:#fff;font-size:18px;font-weight:500;
@@ -275,7 +284,34 @@
     100% { background-position:100% 50%; }
   }
 
-  </style>
+  /* ===== iPhone (≤ 430px portrait) ===== */
+  @media (max-width:430px){
+    h1{font-size:28px;}
+    .tube{font-size:32px;}
+    section.hero{padding:100px 12px 60px;}
+  }
+  
+  /* ===== iPad portrait (768 px) ===== */
+  @media (min-width:768px) and (max-width:1024px){
+    h1{font-size:48px;}
+    .tube{font-size:56px;}
+    nav a{font-size:17px;}
+  }
+  
+  /* ===== iPad landscape (1024 px) ===== */
+  @media (min-width:1024px) and (max-width:1366px){
+    h1{font-size:56px;}
+    .tube{font-size:64px;}
+  }
+  
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion:reduce){
+    .rainbow-text,
+    .redwhite-text,
+    .blueblack-text{animation:none;}
+    .gallery-grid{animation:none;scroll-behavior:auto;}
+  }
+</style>
 </head>
 
 <body>
@@ -355,23 +391,23 @@
   <script>
     (function () {
       const grid = document.querySelector('.gallery-grid');
-      const speed = 0.6;            // px par frame → augmente pour aller plus vite
+      let speed = 0.6;            // px par frame → augmente pour aller plus vite
 
       // On duplique la bande une seule fois pour constituer une boucle sans fin
       grid.innerHTML += grid.innerHTML;
 
       function step () {
-        grid.scrollLeft += speed;
-
-        /* Quand on a parcouru la 1ʳᵉ moitié (la largeur originale),
-           on revient au début — effet boucle sans le moindre "saut". */
-        if (grid.scrollLeft >= grid.scrollWidth / 2) {
-          grid.scrollLeft = 0;
-        }
+        // Avance la grille et boucle sans aucun “saut” ni pause.
+        grid.scrollLeft = (grid.scrollLeft + speed) % (grid.scrollWidth / 2);
         requestAnimationFrame(step);
       }
 
       requestAnimationFrame(step);
+      
+      // Pause la translation quand l’onglet est en arrière‑plan
+      document.addEventListener('visibilitychange', ()=>{
+        speed = document.hidden ? 0 : 0.6;
+      });
     })();
   </script>
 

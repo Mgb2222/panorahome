@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
-  <title>OptiMaison – Reprenez le contrôle de votre consommation</title>
+  <title>PulseSolar – Panneaux solaires & recyclage photovoltaïque</title>
 
   <!-- Styles -->
   <style>
@@ -95,9 +95,9 @@
     position:absolute;top:0;left:0;width:100%;height:100%;
     object-fit:cover;z-index:-1
   }
-  /* ----- Hero full‑screen image ----- */
+  /* ---- Hero principal ---- */
   .hero.full-bg{
-    background:url("https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=5120&q=80") center/cover no-repeat;
+    background:url("https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=5120&q=80") center/cover no-repeat;
     position:relative;
   }
   .hero.full-bg::before{
@@ -105,9 +105,16 @@
     background:rgba(0,0,0,.55); /* assombrit l'image pour la lisibilité */
     z-index:-1;
   }
-  /* ----- Hero Waste full‑screen image ----- */
+  /* ---- Section Recyclage ---- */
+  .hero.water-bg{
+    background:
+      url("https://images.unsplash.com/photo-1508919801845-fc2ae1bc2a28?auto=format&fit=crop&w=3840&q=80")
+        center/cover no-repeat,
+      linear-gradient(180deg,#d7eaff 0%, #f9fdff 100%);
+  }
+  /* ---- Section Durabilité ---- */
   .hero.waste-bg{
-    background:url("https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=3840&q=80") center/cover no-repeat;
+    background:url("https://images.unsplash.com/photo-1606149056749-2ec4b81df4fb?auto=format&fit=crop&w=3840&q=80") center/cover no-repeat;
     position:relative;
   }
   .hero.waste-bg::before{
@@ -261,15 +268,6 @@
     animation: bw-swap 6s ease-in-out infinite alternate;
   }
 
-  /* ----- Hero Water : gradient bleu + photo plein écran ----- */
-  .hero.water-bg{
-    /* calque 1 = photo (cover)  |  calque 2 = dégradé bleu‑blanc */
-    background:
-      url("https://images.unsplash.com/photo-1500370352565-e8ee3f3c817f?auto=format&fit=crop&w=3840&q=80")
-        center/cover no-repeat,
-      linear-gradient(180deg,#d7eaff 0%, #f9fdff 100%);
-  }
-
   /* ===== Mobile optimisation (≤ 600 px) ===== */
   @media (max-width:600px){
     /* Navigation bar */
@@ -375,10 +373,10 @@
       width:160px;
       height:110px;
     }
-    /* Réduit également l’écart entre les cartes */
+    /* Réduit également l'écart entre les cartes */
     section.gallery .gallery-grid{gap:16px;}
     /* Galerie : au lieu d'une seule ligne horizontale,
-       on passe en grille 2 colonnes, centrée */
+       on passe en grille 2 colonnes, centrée */
     section.gallery .gallery-grid{
       flex-wrap:wrap;            /* permet le retour à la ligne            */
       justify-content:center;    /* cartes centrées                       */
@@ -445,12 +443,12 @@
       <ul>
         <li class="logo">
           <a href="#">
-          <img src="logo-optimaison-glow.png" alt="Logo OptiMaison" style="height:80px;width:auto" />
+          <img src="images/ChatGPT Image Apr 18, 2025, 12_50_24 AM.png" alt="Logo PulseSolar" style="height:80px;width:auto" />
           </a>
         </li>
-        <li><a href="#energy">Énergie</a></li>
-        <li><a href="#water">Eau</a></li>
-        <li><a href="#waste">Déchets</a></li>
+        <li><a href="#energy">Panneaux</a></li>
+        <li><a href="#water">Recyclage</a></li>
+        <li><a href="#waste">Durabilité</a></li>
         <li><a href="#gallery">Galerie</a></li>
         <li><a href="#">Télécharger</a></li>
       </ul>
@@ -460,18 +458,18 @@
   <!-- 1. Maisons de luxe sur mesure -->
   <section class="hero dark full-bg" id="energy">
   
-    <h1 class="rainbow-text">Votre énergie, réinventée.</h1>
-    <p class="tagline rainbow-text">Visualisez chaque watt. Économisez, sans compromis.</p>
+    <h1 class="rainbow-text">Votre solaire, réinventé.</h1>
+    <p class="tagline rainbow-text">Profitez de chaque rayon. Économisez, sans compromis.</p>
     <div class="cta">
-      <a class="btn primary" href="#">Découvrir OptiMaison</a>
+      <a class="btn primary" href="#">Découvrir PulseSolar</a>
       <a class="btn secondary" href="#">Télécharger gratuitement</a>
     </div>
   </section>
 
   <!-- 2. Projets d'affaires innovants -->
   <section class="hero water-bg" id="water">
-    <h1 class="blueblack-text">L'eau sous contrôle.</h1>
-    <p class="tagline blueblack-text">Analysez, ajustez — économisez jusqu'à 15&nbsp;%. </p>
+    <h1 class="blueblack-text">Recyclez vos panneaux en toute confiance.</h1>
+    <p class="tagline blueblack-text">Donnez une seconde vie à votre photovoltaïque — simple, transparent.</p>
     <div class="cta">
       <a class="btn primary" href="#">En savoir plus</a>
       <a class="btn secondary" href="#">Commencer</a>
@@ -480,8 +478,8 @@
 
   <!-- 3. Rénovations haut de gamme -->
   <section class="hero waste-bg" id="waste">
-    <h1>Déchets, version simplifiée.</h1>
-    <p class="tagline">Planifiez vos collectes. Réduisez votre empreinte.</p>
+    <h1>Zéro déchet photovoltaïque.</h1>
+    <p class="tagline">Valorisez, réutilisez. Agissez pour la planète.</p>
     <div class="cta">
       <a class="btn primary" href="#">Découvrez</a>
       <a class="btn secondary" href="#">Obtenir l'app</a>
@@ -490,29 +488,29 @@
 
   <!-- Galerie d'inspiration -->
   <section class="gallery hero-iphone" id="gallery">
-    <h2 class="tube">Inspirations haut de gamme, format compact.</h2>
-    <p class="tagline">Des espaces lumineux pour vivre grand, même en petit.</p>
-
+    <h2 class="tube">Installations solaires haut de gamme, format compact.</h2>
+    <p class="tagline">Des toits éclatants pour vivre vert, même en petit.</p>
+    
     <div class="gallery-grid">
-      <div class="card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"  alt="Petite maison moderne en bois" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80"  alt="Maison minimaliste au bord du lac" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=1200&q=80"  alt="Loft compact inondé de lumière" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=1200&q=80"  alt="Maison avec piscine" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=1200&q=80"  alt="Cuisine moderne épurée" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1200&q=80"  alt="Salon lumineux et plantes" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1495435229349-e86db7bfa013?auto=format&fit=crop&w=1200&q=80"  alt="Escalier design en bois" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=80"  alt="Façade architecturale contemporaine" loading="lazy"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80"  alt="Ferme solaire à grande échelle" loading="lazy"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1596075780750-6ecaa2bfe6c5?auto=format&fit=crop&w=1200&q=80"  alt="Panneaux solaires sur toit résidentiel" loading="lazy"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1584270354949-4200969bb460?auto=format&fit=crop&w=1200&q=80"  alt="Technicien inspectant un module PV" loading="lazy"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1498842812179-c81beecf902c?auto=format&fit=crop&w=1200&q=80"  alt="Panneaux solaires au coucher du soleil" loading="lazy"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1486006920555-97f913f746b3?auto=format&fit=crop&w=1200&q=80"  alt="Installation de panneaux sur toiture" loading="lazy"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1604676504238-8f1df2a3fe6a?auto=format&fit=crop&w=1200&q=80"  alt="Recyclage de panneaux photovoltaïques" loading="lazy"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1516113409070-9ce41f1e9fa3?auto=format&fit=crop&w=1200&q=80"  alt="Centre de collecte de modules usagés" loading="lazy"></div>
+      <div class="card"><img src="https://images.unsplash.com/photo-1549999609-a5b3644586e2?auto=format&fit=crop&w=1200&q=80"  alt="Empilement de panneaux destinés au recyclage" loading="lazy"></div>
     </div>
 
     <p class="description">
-      OptiMaison réunit luxe et ingéniosité : micro‑maisons design, rénovations signature, confort durable.  
-      Collaborez avec nos architectes et artisans d'exception pour créer un espace épuré qui reflète votre style.  
-      <strong class="rainbow-text">Réservez une consultation privée</strong> — vivez grand, même en petit.
-    </p>
+       PulseSolar associe luxe et ingénierie solaire : panneaux photovoltaïques haut‑rendement, design élégant, énergie durable.  
+       Collaborez avec nos experts pour transformer votre toiture en centrale propre et rentable.  
+       <strong class="rainbow-text">Réservez une analyse solaire gratuite</strong> — alimentez votre avenir, dès aujourd'hui.
+     </p>
   </section>
   <!-- Pied de page -->
   <footer>
-    © 2025 OptiMaison. Tous droits réservés.
+    © 2025 PulseSolar. Tous droits réservés.
   </footer>
 
 </body>

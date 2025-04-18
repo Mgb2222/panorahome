@@ -158,7 +158,7 @@
     background:#fff;
     box-shadow:0 4px 12px rgba(0,0,0,.08);
     opacity:1;
-    transition:opacity 1.2s ease-out;   /* fondu plus visible */
+    transition:opacity 1.5s ease-out;   /* fondu plus visible */
   }
   section.gallery .card img{
     width:100%;
@@ -312,7 +312,7 @@
     h1{font-size:48px;}
     .tube{font-size:56px;}
     nav a{font-size:17px;}
-    /* Laisse un peu d’espace autour du logo pour les tablettes */
+    /* Laisse un peu d'espace autour du logo pour les tablettes */
     nav ul{padding-left:120px;}
     nav li.logo{left:24px;}
   }
@@ -415,10 +415,16 @@
     (function () {
       const grid = document.querySelector('.gallery-grid');
   
+      /* Clone une fois la rangée pour couvrir largement la largeur */
+      if (grid.children.length && !grid.dataset.cloned) {
+        grid.innerHTML += grid.innerHTML;
+        grid.dataset.cloned = "yes";
+      }
+  
       /* 3. Animation continue + recyclage de carte */
       const cardGap = parseInt(getComputedStyle(grid.querySelector('.card')).marginRight) || 0;
       let cardWidth = grid.querySelector('.card').offsetWidth + cardGap;
-      const baseSpeed = 1.2;    // px par frame  — plus lent et fluide
+      const baseSpeed = 0.8;    // px par frame  — plus doux et lent
       let speed = baseSpeed;
       let pos = 0;
   
@@ -431,16 +437,18 @@
       function step () {
         pos += speed;
   
-        /* Quand la 1ʳᵉ carte a quitté l’écran,
+        /* Quand la 1ʳᵉ carte a quitté l'écran,
            on la remet à droite avec une nouvelle image */
         if (pos >= cardWidth){
           pos -= cardWidth;                       // continuité parfaite
           const first = grid.firstElementChild;
           first.classList.add('fade-in');   // opacité 0
           grid.appendChild(first);          // card à droite
-          setTimeout(()=>{                  // lance le fondu après 300 ms
-            first.classList.remove('fade-in');
-          }, 300);
+          requestAnimationFrame(()=>{       // double frame pour activer la transition
+            requestAnimationFrame(()=>{
+              first.classList.remove('fade-in');
+            });
+          });
         }
   
         grid.style.transform = `translateX(${-pos}px)`;
@@ -448,7 +456,7 @@
       }
       requestAnimationFrame(step);
   
-      /* 4. Pause quand l’onglet est masqué */
+      /* 4. Pause quand l'onglet est masqué */
       document.addEventListener('visibilitychange', ()=>{
         speed = document.hidden ? 0 : baseSpeed;
       });

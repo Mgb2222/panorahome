@@ -377,6 +377,18 @@
     }
     /* Réduit également l’écart entre les cartes */
     section.gallery .gallery-grid{gap:16px;}
+    /* Galerie : au lieu d'une seule ligne horizontale,
+       on passe en grille 2 colonnes, centrée */
+    section.gallery .gallery-grid{
+      flex-wrap:wrap;            /* permet le retour à la ligne            */
+      justify-content:center;    /* cartes centrées                       */
+      gap:12px;                  /* écart réduit entre cartes             */
+    }
+    section.gallery .card{
+      width:48%;                 /* deux colonnes (2×48% + gap)           */
+      height:auto;               /* hauteur auto pour garder le ratio     */
+      aspect-ratio:4/3;          /* assure la même proportion en mobile   */
+    }
   }
   
   /* ===== iPad portrait (768 px) ===== */

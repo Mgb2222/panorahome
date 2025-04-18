@@ -128,9 +128,8 @@
     filter:drop-shadow(0 8px 18px rgba(0,0,0,.1));
   }
   section.gallery.auto-scroll .gallery-grid{
-    display:flex;flex-wrap:nowrap;margin-top:60px;
-    overflow:hidden; /* masque la scrollbar */
-    will-change:transform;     /* lissage GPU – évite tout blocage */
+    display:flex;flex-wrap:nowrap;gap:24px;margin-top:60px;
+    overflow:auto; /* scroll manuel */
   }
   /* Espacement carte‑à‑carte, sans marge après la dernière carte */
   section.gallery.auto-scroll .card{
@@ -390,7 +389,7 @@
   </section>
 
   <!-- Galerie d'inspiration -->
-  <section class="gallery auto-scroll" id="gallery">
+  <section class="gallery" id="gallery">
     <h2 class="tube rainbow-text">Inspirations haut de gamme, format compact.</h2>
     <p class="tagline rainbow-text">Des espaces lumineux pour vivre grand, même en petit.</p>
 
@@ -415,52 +414,6 @@
   <footer>
     © 2025 OptiMaison. Tous droits réservés.
   </footer>
-
-  <script>
-    (function () {
-      const grid = document.querySelector('.gallery-grid');
-  
-      /* Clone une fois la rangée pour couvrir largement la largeur */
-      if (grid.children.length && !grid.dataset.cloned) {
-        grid.innerHTML += grid.innerHTML;
-        grid.dataset.cloned = "yes";
-      }
-  
-      /* 3. Animation continue + recyclage de carte */
-      const cardGap = parseInt(getComputedStyle(grid.querySelector('.card')).marginRight) || 0;
-      let cardWidth = grid.querySelector('.card').offsetWidth + cardGap;
-      const baseSpeed = 0.8;    // px par frame  — plus doux et lent
-      let speed = baseSpeed;
-      let pos = 0;
-  
-      // Ajuste cardWidth si les images modifient la taille de carte
-      const sizeObs = new ResizeObserver(()=>{
-        cardWidth = grid.querySelector('.card').offsetWidth + cardGap;
-      });
-      sizeObs.observe(grid.querySelector('.card'));
-  
-      function step () {
-        pos += speed;
-  
-        /* Quand la 1ʳᵉ carte a quitté l'écran,
-           on la remet à droite avec une nouvelle image */
-        if (pos >= cardWidth){
-          pos -= cardWidth;
-          first.classList.add('fade-in');    // lance l'animation CSS
-          grid.appendChild(first);           // carte recyclée à droite
-        }
-  
-        grid.style.transform = `translateX(${-pos}px)`;
-        requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-  
-      /* 4. Pause quand l'onglet est masqué */
-      document.addEventListener('visibilitychange', ()=>{
-        speed = document.hidden ? 0 : baseSpeed;
-      });
-    })();
-  </script>
 
 </body>
 </html>

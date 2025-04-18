@@ -354,7 +354,22 @@
     section.hero{padding:100px 12px 60px;}
     /* Décale les liens pour ne plus chevaucher le logo */
     nav ul{padding-left:92px;}   /* ≈ largeur logo (44) + marge à droite */
-    nav li.logo{left:12px;}      /* logo proche du bord, gagne 28 px */
+    nav li.logo{left:12px;}      /* logo proche du bord, gagne 28 px */
+    /* --- iPhone : section hero‑iphone --- */
+    section.gallery.hero-iphone{
+      padding:120px 16px 120px;
+    }
+    section.gallery.hero-iphone h2{
+      font-size:32px;
+    }
+    section.gallery.hero-iphone p.tagline{
+      font-size:18px;
+      margin-bottom:40px;
+    }
+    section.gallery.hero-iphone p.description{
+      font-size:18px;
+      line-height:1.55;
+    }
   }
   
   /* ===== iPad portrait (768 px) ===== */
@@ -365,6 +380,20 @@
     /* Laisse un peu d'espace autour du logo pour les tablettes */
     nav ul{padding-left:120px;}
     nav li.logo{left:24px;}
+    /* --- iPad portrait : section hero‑iphone --- */
+    section.gallery.hero-iphone{
+      padding:140px 24px 140px;
+    }
+    section.gallery.hero-iphone h2{
+      font-size:52px;
+    }
+    section.gallery.hero-iphone p.tagline{
+      font-size:24px;
+      margin-bottom:52px;
+    }
+    section.gallery.hero-iphone p.description{
+      font-size:20px;
+    }
   }
   
   /* ===== iPad landscape (1024 px) ===== */

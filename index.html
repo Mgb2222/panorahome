@@ -118,6 +118,39 @@
   }
   /* ----- Galerie ----- */
   section.gallery.auto-scroll{padding:120px 20px;background:#fff;text-align:center}
+  /* =====  Hero‑iPhone style pour la galerie  ===== */
+  section.gallery.hero-iphone{
+    background:linear-gradient(180deg,#0b114e 0%, #7c8eed 100%);
+    padding:140px 20px 160px;
+    color:#fff;
+  }
+
+  section.gallery.hero-iphone h2{
+    font-size:64px;
+    font-weight:800;
+    letter-spacing:-0.5px;
+    text-shadow:0 4px 20px rgba(0,0,0,.30);
+  }
+
+  section.gallery.hero-iphone p.tagline{
+    font-size:28px;
+    font-weight:400;
+    margin-top:10px;
+    margin-bottom:64px;
+  }
+
+  section.gallery.hero-iphone .gallery-grid{
+    margin-bottom:72px;
+  }
+
+  section.gallery.hero-iphone p.description{
+    max-width:900px;
+    margin:0 auto;
+    font-size:24px;
+    line-height:1.65;
+    letter-spacing:.25px;
+    text-align:center;
+  }
   section.gallery h2{
     font-size:56px;
     font-weight:800;
@@ -402,9 +435,9 @@
   </section>
 
   <!-- Galerie d'inspiration -->
-  <section class="gallery" id="gallery">
-    <h2 class="tube rainbow-text">Inspirations haut de gamme, format compact.</h2>
-    <p class="tagline rainbow-text">Des espaces lumineux pour vivre grand, même en petit.</p>
+  <section class="gallery hero-iphone" id="gallery">
+    <h2 class="tube">Inspirations haut de gamme, format compact.</h2>
+    <p class="tagline">Des espaces lumineux pour vivre grand, même en petit.</p>
 
     <div class="gallery-grid">
       <div class="card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"  alt="Petite maison moderne en bois" loading="lazy"></div>
@@ -417,7 +450,7 @@
       <div class="card"><img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=80"  alt="Façade architecturale contemporaine" loading="lazy"></div>
     </div>
 
-    <p style="max-width:760px;margin:80px auto 0;font-size:22px;line-height:1.65;letter-spacing:.15px;text-align:center">
+    <p class="description">
       OptiMaison réunit luxe et ingéniosité : micro‑maisons design, rénovations signature, confort durable.  
       Collaborez avec nos architectes et artisans d'exception pour créer un espace épuré qui reflète votre style.  
       <strong class="rainbow-text">Réservez une consultation privée</strong> — vivez grand, même en petit.

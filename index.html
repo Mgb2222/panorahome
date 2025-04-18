@@ -88,24 +88,13 @@
   }
   /* ----- Hero full‑screen image ----- */
   .hero.full-bg{
-    background:url("https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=5120&q=80") center/cover no-repeat;
+    background:#000;            /* image supprimée */
     position:relative;
-  }
-  .hero.full-bg::before{
-    content:"";position:absolute;inset:0;
-    background:rgba(0,0,0,.55); /* assombrit l'image pour la lisibilité */
-    z-index:-1;
   }
   /* ----- Hero Waste full‑screen image ----- */
   .hero.waste-bg{
-    background:url("https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=3840&q=80") center/cover no-repeat;
+    background:#ffffff;
     position:relative;
-  }
-  .hero.waste-bg::before{
-    content:"";
-    position:absolute;inset:0;
-    background:rgba(255,255,255,.55);   /* voile pour la lisibilité du texte noir */
-    z-index:-1;
   }
   /* ----- Galerie ----- */
   section.gallery.auto-scroll{padding:120px 20px;background:#fff;text-align:center}
@@ -118,13 +107,9 @@
     color:transparent;-webkit-text-fill-color:transparent;text-fill-color:transparent;
     filter:drop-shadow(0 8px 18px rgba(0,0,0,.1));
   }
-  section.gallery.auto-scroll .gallery-grid{
-    display:flex;flex-wrap:nowrap;gap:24px;margin-top:60px;
-    overflow:hidden; /* masque la scrollbar */
-  }
   section.gallery .gallery-grid{
     display:flex;flex-wrap:nowrap;gap:24px;margin-top:60px;
-    padding:0 0 12px 4px
+    overflow:hidden; /* masque la scrollbar */
   }
   section.gallery .gallery-grid::-webkit-scrollbar{height:8px}
   section.gallery .gallery-grid::-webkit-scrollbar-thumb{background:#d1d1d6;border-radius:4px}
@@ -167,10 +152,7 @@
   /* ----- Hero Water : gradient bleu + photo plein écran ----- */
   .hero.water-bg{
     /* calque 1 = photo (cover)  |  calque 2 = dégradé bleu‑blanc */
-    background:
-      url("https://images.unsplash.com/photo-1500370352565-e8ee3f3c817f?auto=format&fit=crop&w=3840&q=80")
-        center/cover no-repeat,
-      linear-gradient(180deg,#d7eaff 0%, #f9fdff 100%);
+    background:linear-gradient(180deg,#d7eaff 0%, #f9fdff 100%);
   }
 
   /* ===== Mobile optimisation (≤ 600 px) ===== */
@@ -188,14 +170,6 @@
     .cta{gap:12px;}
     .btn{padding:10px 24px;font-size:15px;}
  
-    /* Gallery */
-    section.gallery.auto-scroll{padding:80px 14px;}
-    section.gallery.auto-scroll h2{font-size:32px;}
-    .tube{font-size:36px;}
-    section.gallery .card{
-      width:200px;
-      height:140px;
-    }
   }
  
   /* ===== Large desktop optimisation (≥ 1600 px) ===== */
@@ -219,13 +193,12 @@
       <ul>
         <li class="logo">
           <a href="#">
-          <img src="logo-optimaison-glow.png" alt="Logo OptiMaison" style="height:80px;width:auto" />
+          <img src="logo-chatgpt.png" alt="ChatGPT Image" style="height:80px;width:auto" />
           </a>
         </li>
         <li><a href="#energy">Énergie</a></li>
         <li><a href="#water">Eau</a></li>
         <li><a href="#waste">Déchets</a></li>
-        <li><a href="#gallery">Galerie</a></li>
         <li><a href="#">Télécharger</a></li>
       </ul>
     </nav>
@@ -262,51 +235,10 @@
     </div>
   </section>
 
-  <!-- Galerie d'inspiration -->
-  <section class="gallery auto-scroll" id="gallery">
-    <h2 class="tube">Inspirations haut de gamme, format compact.</h2>
-    <p class="tagline">Des espaces lumineux pour vivre grand, même en petit.</p>
-
-    <div class="gallery-grid">
-      <div class="card"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"  alt="Petite maison moderne en bois" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80"  alt="Maison minimaliste au bord du lac" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=1200&q=80"  alt="Loft compact inondé de lumière" loading="lazy"></div>
-      <div class="card"><img src="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?auto=format&fit=crop&w=1200&q=80"  alt="Maison avec piscine" loading="lazy"></div>
-    </div>
-
-    <p style="max-width:720px;margin:60px auto 0;font-size:20px;line-height:1.5">
-      OptiMaison réunit luxe et ingéniosité : micro‑maisons design, rénovations signature, confort durable.  
-      Collaborez avec nos architectes et artisans d'exception pour créer un espace épuré qui reflète votre style.  
-      <strong>Réservez une consultation privée</strong> — vivez grand, même en petit.
-    </p>
-  </section>
   <!-- Pied de page -->
   <footer>
     © 2025 OptiMaison. Tous droits réservés.
   </footer>
-
-  <script>
-    (function () {
-      const grid = document.querySelector('.gallery-grid');
-      const speed = 0.4;               // pixels per animation frame
-      const originalWidth = grid.scrollWidth;  // width before duplication
- 
-      // Duplique les éléments une seule fois pour constituer une bande continue
-      grid.innerHTML += grid.innerHTML;
- 
-      function step() {
-        grid.scrollLeft += speed;
-        // Lorsque le défilement a parcouru la largeur initiale,
-        // on le ramène en arrière de cette même largeur – effet boucle sans saut
-        if (grid.scrollLeft >= originalWidth) {
-          grid.scrollLeft -= originalWidth;
-        }
-        requestAnimationFrame(step);
-      }
- 
-      requestAnimationFrame(step);
-    })();
-  </script>
 
 </body>
 </html>
